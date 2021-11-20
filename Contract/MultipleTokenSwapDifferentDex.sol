@@ -75,7 +75,7 @@ contract TokenSwap {
             (reserveIn, reserveOut, loc[i]) = getReserves(pair[i], path[i], path[i+1]);
             amounts[i + 1] = getAmountOut(amounts[i], reserveIn, reserveOut, fees[i]);
         }
-        // require(amounts[pair.length] > amounts[0], "arbitrage fail");
+        require(amounts[pair.length] > amounts[0], "arbitrage fail");
     }
     
     function getAmountOut(uint amountIn, uint reserveIn, uint reserveOut, uint fee) private pure returns (uint amountOut) {
