@@ -28,13 +28,13 @@ contract TokenSwap {
     constructor() {
         owner = msg.sender;
     }
-    
-    receive() external payable {}
-    
+        
     modifier onlyOwner {
         require(msg.sender == owner);
         _;
     }
+    
+    receive() external payable {}
     
     function sweep(address _tokenAddress) onlyOwner public {
         uint balance = IERC20(_tokenAddress).balanceOf(address(this));
